@@ -336,6 +336,7 @@ MonoBehaviour:
   noteTime: 0
   noteSpawnY: 0
   noteTapY: 0
+  lanes: []
 --- !u!4 &1375813005
 Transform:
   m_ObjectHideFlags: 0
