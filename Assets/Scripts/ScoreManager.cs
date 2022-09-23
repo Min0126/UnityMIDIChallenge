@@ -5,41 +5,41 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static ScoreManager Instance { get; private set; }
+    // public static ScoreManager Instance { get; private set; }
 
-    [SerializeField]
-    private AudioSource hitSfx;
+    // [SerializeField]
+    // private AudioSource hitSfx;
 
-    [SerializeField]
-    private AudioSource missSfx;
+    // [SerializeField]
+    // private AudioSource missSfx;
 
-    [SerializeField]
-    private TMP_Text scoreText;
+    // [SerializeField]
+    // private TMP_Text scoreText;
 
-    public int score;
+    // public int score;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        Instance = this;
-        score = 0;
-    }
+    // // Start is called before the first frame update
+    // void Start()
+    // {
+    //     Instance = this;
+    //     score = 0;
+    // }
 
-    public void Hit()
-    {
-        score += 1;
-        Instance.hitSfx.Play();
-    }
+    // public void Hit()
+    // {
+    //     score += 1;
+    //     Instance.hitSfx.Play();
+    // }
 
-    public void Miss()
-    {
-        score += 0;
-        Instance.missSfx.Play();
-    }
+    // public void Miss()
+    // {
+    //     score += 0;
+    //     Instance.missSfx.Play();
+    // }
 
-    // Update is called once per frame
-    private void Update()
-    {
-        scoreText.text = score.ToString();
-    }
+    // // Update is called once per frame
+    // private void Update()
+    // {
+    //     scoreText.text = score.ToString();
+    // }
 }
