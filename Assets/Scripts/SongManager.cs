@@ -54,7 +54,7 @@ public class SongManager : MonoBehaviour
     public void GetDataFromMidi()
     {
         var notes = midiFile.GetNotes();
-        var array = new Note[notes.Count];
+        var array = new Melanchall.DryWetMidi.Interaction.Note[notes.Count];
         notes.CopyTo(array, 0);
 
         Invoke(nameof(StartSong), songDelayInSeconds);
