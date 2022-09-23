@@ -14,19 +14,22 @@ public class SongManager : MonoBehaviour
     [SerializeField]
     private AudioSource audioSource;
 
-    public float songDelayInSeconds;
+    [SerializeField]
+    private float songDelayInSeconds;
 
     public double marginOfError; // in seconds
 
     public int inputDelayInMilliseconds;
 
-    public string midiFileLocation;
+    [SerializeField]
+    private string midiFileLocation;
 
     public float noteTime; //time that note will be on screen
 
     public float noteSpawnY;
 
-    public float noteTapY;
+    [SerializeField]
+    private float noteTapY;
 
     public float noteDespawnY
     {
@@ -49,9 +52,10 @@ public class SongManager : MonoBehaviour
         midiFile =
             MidiFile
                 .Read(Application.streamingAssetsPath + "/" + midiFileLocation);
+        GetDataFromMidi();
     }
 
-    public void GetDataFromMidi()
+    private void GetDataFromMidi()
     {
         var notes = midiFile.GetNotes();
         var array = new Melanchall.DryWetMidi.Interaction.Note[notes.Count];
@@ -60,7 +64,7 @@ public class SongManager : MonoBehaviour
         Invoke(nameof(StartSong), songDelayInSeconds);
     }
 
-    public void StartSong()
+    private void StartSong()
     {
         audioSource.Play();
     }

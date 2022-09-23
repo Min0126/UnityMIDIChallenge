@@ -94,9 +94,11 @@ public class Lane : MonoBehaviour
 
     private void Hit()
     {
+        ScoreManager.Instance.Hit();
     }
 
     private void Miss()
     {
+        ScoreManager.Instance.Miss();
     }
 }
