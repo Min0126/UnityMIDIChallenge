@@ -41,6 +41,9 @@ public class SongManager : MonoBehaviour
 
     public static MidiFile midiFile;
 
+    [SerializeField]
+    private Lane[] lanes;
+
     private void Start()
     {
         Instance = this;
@@ -60,6 +63,11 @@ public class SongManager : MonoBehaviour
         var notes = midiFile.GetNotes();
         var array = new Melanchall.DryWetMidi.Interaction.Note[notes.Count];
         notes.CopyTo(array, 0);
+
+        foreach (var lane in lanes)
+        {
+            lane.GetComponent<Lane>().SetTimeStamps(array);
+        }
 
         Invoke(nameof(StartSong), songDelayInSeconds);
     }
