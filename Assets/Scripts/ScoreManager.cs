@@ -5,34 +5,86 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    private string currentKeyPressed;
+    // private string currentKeyPressed;
+    public static ScoreManager Instance { get; private set; }
 
-    void OnGUI()
+    // [SerializeField]
+    // private Transform noteIndicatorTransform;
+
+    [SerializeField]
+    private TMP_Text scoreText;
+
+    public int totalScore;
+
+    private void Start()
     {
-        Event e = Event.current;
-        if (e.isKey)
-        {
-            currentKeyPressed = e.keyCode.ToString();
-            Debug.Log("Detected key code: " + e.keyCode.GetType());
-        }
+        Instance = this;
+        totalScore = 0;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void Update()
     {
-        if (other.gameObject.CompareTag("Note"))
-        {
-            if (currentKeyPressed == other.name[0].ToString())
-            {
-                Debug
-                    .Log($"Player pressed {currentKeyPressed} on {other.name}");
-                Destroy(other.gameObject);
-            }
-            else
-            {
-                Debug.Log($"Player miss");
-            }
-        }
+        scoreText.text = $"Score: {totalScore.ToString()}";
     }
+
+    public void Hit(int score)
+    {
+        totalScore += score;
+        // Instance.hitSfx.Play();
+    }
+
+    public void Miss()
+    {
+        totalScore += 0;
+        // Instance.missSfx.Play();
+    }
+
+    // void OnGUI()
+    // {
+    //     Event e = Event.current;
+    //     if (e.isKey)
+    //     {
+    //         currentKeyPressed = e.keyCode.ToString();
+    //     }
+    //     currentKeyPressed = e.keyCode.ToString();
+    //     Debug.Log (currentKeyPressed);
+    // }
+
+    // private void CheckNote(Vector3 notePos)
+    // {
+    //     if ((notePos.y< (noteIndicatorTransform.position.y + marginOfError)||notePos.y> (noteIndicatorTransform.position.y - marginOfError))
+    //     {
+    //         if (currentKeyPressed == other.name[0].ToString())
+    //         {
+    //             int noteScore = other.gameObject.GetComponent<Note>().noteScore;
+    //             Hit (noteScore);
+    //             Debug
+    //                 .Log($"Player pressed {currentKeyPressed} on {other.name}");
+    //             Destroy(other.gameObject);
+    //         }
+    //         else
+    //         {
+    //             Miss();
+    //             Debug.Log($"Player miss");
+    //         }
+    //     }
+    //     // if (other.gameObject.CompareTag("Note"))
+    //     // {
+    //     //     if (currentKeyPressed == other.name[0].ToString())
+    //     //     {
+    //     //         int noteScore = other.gameObject.GetComponent<Note>().noteScore;
+    //     //         Hit (noteScore);
+    //     //         Debug
+    //     //             .Log($"Player pressed {currentKeyPressed} on {other.name}");
+    //     //         Destroy(other.gameObject);
+    //     //     }
+    //     //     else
+    //     //     {
+    //     //         Miss();
+    //     //         Debug.Log($"Player miss");
+    //     //     }
+    //     // }
+    // }
     // public static ScoreManager Instance { get; private set; }
 
     // [SerializeField]

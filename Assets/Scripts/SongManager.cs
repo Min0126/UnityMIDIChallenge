@@ -2,8 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using Melanchall.DryWetMidi.Core;
-using Melanchall.DryWetMidi.Interaction;
+// using Melanchall.DryWetMidi.Core;
+// using Melanchall.DryWetMidi.Interaction;
 using MidiPlayerTK;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -22,11 +22,15 @@ public class SongManager : MonoBehaviour
     // private string midiFileLocation;
     public float noteSpeed; //time that note will be on screen
 
-    public float noteTime; //time that note will be on screen
+    // public float noteTime; //time that note will be on screen
 
-    public float audioTime; //time that note will be on screen
+    // public float audioTime; //time that note will be on screen
 
     public float songSpeed; //time that note will be on screen
+
+    // public float songDuration; //time that note will be on screen
+
+    public List<KeyCode> currentKeyPressedList = new List<KeyCode>();
 
     // public float noteSpawnY;
     // [SerializeField]
@@ -60,6 +64,41 @@ public class SongManager : MonoBehaviour
         // ReadFromFile();
     }
 
+    void OnGUI()
+    {
+        Event e = Event.current;
+        if (e.type == EventType.KeyDown)
+        {
+            if (!SongManager.Instance.currentKeyPressedList.Contains(e.keyCode))
+            {
+                SongManager.Instance.currentKeyPressedList.Add(e.keyCode);
+            }
+
+            // foreach (KeyCode key in keyValues)
+            // {
+            //     if (e.keyCode == key && !currentKeyPressedList.Contains(key))
+            //     {
+            //         currentKeyPressedList.Add (key);
+            //     }
+            // }
+        }
+        if (e.type == EventType.KeyUp)
+        {
+            if (SongManager.Instance.currentKeyPressedList.Contains(e.keyCode))
+            {
+                SongManager.Instance.currentKeyPressedList.Remove(e.keyCode);
+            }
+
+            // foreach (KeyCode key in keyValues)
+            // {
+            //     if (e.keyCode == key && currentKeyPressedList.Contains(key))
+            //     {
+            //         currentKeyPressedList.Remove (key);
+            //     }
+            // }
+        }
+    }
+
     public void NoteActions(List<MPTKEvent> mptkEvents)
     {
         foreach (MPTKEvent note in mptkEvents)
@@ -71,13 +110,14 @@ public class SongManager : MonoBehaviour
 
                 // string noteLabel = HelperNoteLabel.LabelFromMidi(noteValue); // get the note label
                 // noteTime = note.Duration; // get the note duration
-                noteTime = note.Duration; // get the note duration
+                // noteTime = note.Duration; // get the note duration
                 noteSpeed = note.Velocity;
-                audioTime = note.RealTime;
+                // audioTime = note.RealTime;
                 SpawnNote (noteValue);
-                
+
                 songSpeed = midiFilePlayer.MPTK_Speed;
-                Debug.Log($"song speed: {midiFilePlayer.MPTK_Speed}");
+                // songDuration = midiFilePlayer.MPTK_DurationMS;
+                // Debug.Log($"song speed: {midiFilePlayer.MPTK_Speed}");
                 // char noteOctave = noteLabel[1]; // get the octave of the note
                 // GameObject octaveModel = GameObject.Find("octave" + noteOctave); // get the correct octave gameobject
                 // float volume = note.Velocity; // get the note velocity
