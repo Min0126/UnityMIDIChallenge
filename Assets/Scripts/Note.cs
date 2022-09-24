@@ -25,7 +25,11 @@ public class Note : MonoBehaviour
     // // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.left*SongManager.Instance.noteSpeed*Time.deltaTime);
+        transform
+            .Translate(Vector3.left *
+            SongManager.Instance.noteSpeed *
+            SongManager.Instance.songSpeed *
+            Time.deltaTime);
         //////////////////////////////////////////////////////
         // double timeSinceSpawned =
         //     SongManager.GetAudioSourceTime() - timeSpawned;
@@ -48,10 +52,9 @@ public class Note : MonoBehaviour
         //             .Lerp(Vector3.down * spawnPos.y,
         //             Vector3.down * despawnPos.y,
         //             timeRatio);
-         
 
-            // Debug.Log($"timeElapsed: {timeElapsed} name:{gameObject.name}");
-            // timeElapsed += Time.deltaTime * SongManager.Instance.noteSpeed;
+        // Debug.Log($"timeElapsed: {timeElapsed} name:{gameObject.name}");
+        // timeElapsed += Time.deltaTime * SongManager.Instance.noteSpeed;
         // }
         // else
         // {

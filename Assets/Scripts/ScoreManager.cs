@@ -31,7 +31,6 @@ public class ScoreManager : MonoBehaviour
             {
                 Debug.Log($"Player miss");
             }
-            Debug.Log(other.name[0]);
         }
     }
     // public static ScoreManager Instance { get; private set; }
