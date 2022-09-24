@@ -24,6 +24,8 @@ public class SongManager : MonoBehaviour
 
     public float noteTime; //time that note will be on screen
 
+    public float audioTime; //time that note will be on screen
+
     // public float noteSpawnY;
     // [SerializeField]
     // private float noteTapY;
@@ -69,8 +71,10 @@ public class SongManager : MonoBehaviour
                 // noteTime = note.Duration; // get the note duration
                 noteTime = note.Duration; // get the note duration
                 noteSpeed = note.Velocity;
+                audioTime = note.RealTime;
                 SpawnNote (noteValue);
 
+                // Debug.Log($"audioTime: {audioTime}");
                 // char noteOctave = noteLabel[1]; // get the octave of the note
                 // GameObject octaveModel = GameObject.Find("octave" + noteOctave); // get the correct octave gameobject
                 // float volume = note.Velocity; // get the note velocity

@@ -7,7 +7,7 @@ public class Note : MonoBehaviour
     private Vector3 spawnPos;
 
     [SerializeField]
-    private int despawnOffset = 100;
+    private int despawnOffset = 20;
 
     private float timeSpawned;
 
@@ -17,13 +17,16 @@ public class Note : MonoBehaviour
     // // Start is called before the first frame update
     void Start()
     {
-        // timeSpawned = SongManager.Instance.audioTime;
-        spawnPos = transform.localPosition;
+        timeSpawned = SongManager.Instance.audioTime;
+        timeElapsed = 0;
+        spawnPos = transform.position;
     }
 
     // // Update is called once per frame
     void Update()
     {
+        transform.Translate(Vector3.left*SongManager.Instance.noteSpeed*Time.deltaTime);
+        //////////////////////////////////////////////////////
         // double timeSinceSpawned =
         //     SongManager.GetAudioSourceTime() - timeSpawned;
         // float timeRatio =
@@ -31,25 +34,31 @@ public class Note : MonoBehaviour
         // double timeSinceSpawned = SongManager.Instance.audioTime - timeSpawned;
         // float timeRatio =
         //     ((float) timeSinceSpawned / (SongManager.Instance.noteTime));
-        float timeRatio = timeElapsed / SongManager.Instance.noteTime;
+        //////////////////////////////////////////////////////////////////
+        // timeElapsed = SongManager.Instance.audioTime - timeSpawned;
+        // float timeRatio = timeElapsed / SongManager.Instance.noteTime;
 
-        if (timeRatio > 1)
-        {
-            Destroy (gameObject);
-        }
-        else
-        {
-            Vector3 despawnPos =
-                new Vector3(spawnPos.x, spawnPos.y - despawnOffset, spawnPos.z);
-            if (timeElapsed < SongManager.Instance.noteTime)
-            {
-                transform.position =
-                    Vector3.Lerp(spawnPos, despawnPos, timeRatio);
-                timeElapsed += Time.deltaTime * SongManager.Instance.noteSpeed;
-            }
+        // Vector3 despawnPos =
+        //     new Vector3(spawnPos.x, spawnPos.y - despawnOffset, spawnPos.z);
 
-            // transform.position = Vector3.Lerp(spawnPos, despawnPos, timeRatio);
-        }
+        // if (timeElapsed < SongManager.Instance.noteTime)
+        // {
+        //     transform.position +=
+        //         Vector3
+        //             .Lerp(Vector3.down * spawnPos.y,
+        //             Vector3.down * despawnPos.y,
+        //             timeRatio);
+         
+
+            // Debug.Log($"timeElapsed: {timeElapsed} name:{gameObject.name}");
+            // timeElapsed += Time.deltaTime * SongManager.Instance.noteSpeed;
+        // }
+        // else
+        // {
+        //     Destroy (gameObject);
+        // }
+
+        // transform.position = Vector3.Lerp(spawnPos, despawnPos, timeRatio);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

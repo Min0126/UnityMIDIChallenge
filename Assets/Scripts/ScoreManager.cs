@@ -5,6 +5,35 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
+    private string currentKeyPressed;
+
+    void OnGUI()
+    {
+        Event e = Event.current;
+        if (e.isKey)
+        {
+            currentKeyPressed = e.keyCode.ToString();
+            Debug.Log("Detected key code: " + e.keyCode.GetType());
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Note"))
+        {
+            if (currentKeyPressed == other.name[0].ToString())
+            {
+                Debug
+                    .Log($"Player pressed {currentKeyPressed} on {other.name}");
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                Debug.Log($"Player miss");
+            }
+            Debug.Log(other.name[0]);
+        }
+    }
     // public static ScoreManager Instance { get; private set; }
 
     // [SerializeField]
