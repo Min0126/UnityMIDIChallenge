@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 49052142}
   - component: {fileID: 49052141}
   m_Layer: 5
-  m_Name: Button Text
+  m_Name: D Button Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 342233852}
   - component: {fileID: 342233851}
   m_Layer: 5
-  m_Name: Button Text
+  m_Name: F Button Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1764,7 +1764,7 @@ GameObject:
   - component: {fileID: 1136492185}
   - component: {fileID: 1136492184}
   m_Layer: 5
-  m_Name: Button Text
+  m_Name: H Button Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2389,7 +2389,7 @@ GameObject:
   - component: {fileID: 1247778713}
   - component: {fileID: 1247778712}
   m_Layer: 5
-  m_Name: Button Text
+  m_Name: A Button Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2523,7 +2523,7 @@ GameObject:
   - component: {fileID: 1299001909}
   - component: {fileID: 1299001908}
   m_Layer: 5
-  m_Name: Button Text
+  m_Name: S Button Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2776,7 +2776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noteSpeed: 0
-  songSpeed: 0
+  expectedNoteSpeed: 0
   currentKeyPressedList: 
   keysCanPressed: 610000007300000064000000660000006700000068000000
   buttonSounds:
@@ -2801,6 +2801,13 @@ MonoBehaviour:
   - {fileID: 1178855362}
   - {fileID: 601646106}
   - {fileID: 1710771247}
+  keyText:
+  - {fileID: 1247778712}
+  - {fileID: 1299001908}
+  - {fileID: 49052141}
+  - {fileID: 342233851}
+  - {fileID: 2132857148}
+  - {fileID: 1136492184}
 --- !u!4 &1375813005
 Transform:
   m_ObjectHideFlags: 0
@@ -4218,7 +4225,7 @@ GameObject:
   - component: {fileID: 2132857149}
   - component: {fileID: 2132857148}
   m_Layer: 5
-  m_Name: Button Text
+  m_Name: G Button Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

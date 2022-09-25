@@ -51,7 +51,7 @@ public class Note : MonoBehaviour
         transform
             .Translate(Vector3.left *
             SongManager.Instance.noteSpeed *
-            SongManager.Instance.songSpeed *
+            SongManager.Instance.playerNoteSpeed *
             Time.deltaTime);
         //////////////////////////////////////////////////////
         // double timeSinceSpawned =

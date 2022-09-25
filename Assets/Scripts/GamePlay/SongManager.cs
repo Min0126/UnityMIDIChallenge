@@ -5,6 +5,7 @@ using System.IO;
 // using Melanchall.DryWetMidi.Core;
 // using Melanchall.DryWetMidi.Interaction;
 using MidiPlayerTK;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -20,11 +21,11 @@ public class SongManager : MonoBehaviour
     // public int inputDelayInMilliseconds;
     // [SerializeField]
     // private string midiFileLocation;
-    public float noteSpeed; //time that note will be on screen
+    public float noteSpeed; //the speed of note in the song
 
     // public float noteTime; //time that note will be on screen
     // public float audioTime; //time that note will be on screen
-    public float songSpeed; //time that note will be on screen
+    public float playerNoteSpeed; //the note's speed that player want. Default equal song's speed
 
     // public float songDuration; //time that note will be on screen
     public List<KeyCode> currentKeyPressedList = new List<KeyCode>();
@@ -56,9 +57,11 @@ public class SongManager : MonoBehaviour
 
     // [SerializeField]
     // private List<int> noteValues = new List<int>();
-
     [SerializeField]
     private List<Transform> lanes = new List<Transform>();
+
+    [SerializeField]
+    private List<TMP_Text> keyText = new List<TMP_Text>();
 
     // [SerializeField]
     // private Lane[] lanes;
@@ -67,6 +70,7 @@ public class SongManager : MonoBehaviour
         Instance = this;
         midiFilePlayer = FindObjectOfType<MidiFilePlayer>();
         midiFilePlayer.OnEventNotesMidi.AddListener (NoteActions);
+        playerNoteSpeed = midiFilePlayer.MPTK_Speed;
         // ReadFromFile();
     }
 
@@ -82,6 +86,7 @@ public class SongManager : MonoBehaviour
                 {
                     if (e.keyCode == keysCanPressed[i])
                     {
+                        keyText[i].color = Color.black;
                         audioSource.clip = buttonSounds[i];
                         audioSource.Play();
                     }
@@ -101,6 +106,13 @@ public class SongManager : MonoBehaviour
             if (SongManager.Instance.currentKeyPressedList.Contains(e.keyCode))
             {
                 SongManager.Instance.currentKeyPressedList.Remove(e.keyCode);
+                for (int i = 0; i < keysCanPressed.Count; i++)
+                {
+                    if (e.keyCode == keysCanPressed[i])
+                    {
+                        keyText[i].color = Color.white;
+                    }
+                }
             }
 
             // foreach (KeyCode key in keyValues)
@@ -126,11 +138,11 @@ public class SongManager : MonoBehaviour
                 // noteTime = note.Duration; // get the note duration
                 // noteTime = note.Duration; // get the note duration
                 noteSpeed = note.Velocity;
+                // expectedNoteSpeed = midiFilePlayer.MPTK_Speed;
 
                 // audioTime = note.RealTime;
                 SpawnNote (noteValue);
 
-                songSpeed = midiFilePlayer.MPTK_Speed;
                 // songDuration = midiFilePlayer.MPTK_DurationMS;
                 // Debug.Log($"song speed: {midiFilePlayer.MPTK_Speed}");
                 // char noteOctave = noteLabel[1]; // get the octave of the note
