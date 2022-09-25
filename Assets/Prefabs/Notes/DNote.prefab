@@ -99,8 +99,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   despawnOffset: 20
   noteIndicatorPos: {x: 0, y: 0, z: 0}
+  noteValue: 38
   noteScore: 20
   marginOfError: 3
+  noteKeyCode: 100
 --- !u!70 &-366982611596316348
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

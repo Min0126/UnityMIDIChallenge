@@ -8,9 +8,6 @@ public class ScoreManager : MonoBehaviour
     // private string currentKeyPressed;
     public static ScoreManager Instance { get; private set; }
 
-    // [SerializeField]
-    // private Transform noteIndicatorTransform;
-
     [SerializeField]
     private TMP_Text scoreText;
 
@@ -30,13 +27,13 @@ public class ScoreManager : MonoBehaviour
     public void Hit(int score)
     {
         totalScore += score;
+
         // Instance.hitSfx.Play();
     }
 
     public void Miss()
     {
         totalScore += 0;
-        // Instance.missSfx.Play();
     }
 
     // void OnGUI()

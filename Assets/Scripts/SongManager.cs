@@ -23,14 +23,20 @@ public class SongManager : MonoBehaviour
     public float noteSpeed; //time that note will be on screen
 
     // public float noteTime; //time that note will be on screen
-
     // public float audioTime; //time that note will be on screen
-
     public float songSpeed; //time that note will be on screen
 
     // public float songDuration; //time that note will be on screen
-
     public List<KeyCode> currentKeyPressedList = new List<KeyCode>();
+
+    [SerializeField]
+    private List<KeyCode> keysCanPressed = new List<KeyCode>();
+
+    [SerializeField]
+    private List<AudioClip> buttonSounds = new List<AudioClip>();
+
+    [SerializeField]
+    private AudioSource audioSource;
 
     // public float noteSpawnY;
     // [SerializeField]
@@ -48,8 +54,8 @@ public class SongManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> notePrefabs = new List<GameObject>();
 
-    [SerializeField]
-    private List<int> noteValues = new List<int>();
+    // [SerializeField]
+    // private List<int> noteValues = new List<int>();
 
     [SerializeField]
     private List<Transform> lanes = new List<Transform>();
@@ -72,6 +78,14 @@ public class SongManager : MonoBehaviour
             if (!SongManager.Instance.currentKeyPressedList.Contains(e.keyCode))
             {
                 SongManager.Instance.currentKeyPressedList.Add(e.keyCode);
+                for (int i = 0; i < keysCanPressed.Count; i++)
+                {
+                    if (e.keyCode == keysCanPressed[i])
+                    {
+                        audioSource.clip = buttonSounds[i];
+                        audioSource.Play();
+                    }
+                }
             }
 
             // foreach (KeyCode key in keyValues)
@@ -112,6 +126,7 @@ public class SongManager : MonoBehaviour
                 // noteTime = note.Duration; // get the note duration
                 // noteTime = note.Duration; // get the note duration
                 noteSpeed = note.Velocity;
+
                 // audioTime = note.RealTime;
                 SpawnNote (noteValue);
 
@@ -130,15 +145,24 @@ public class SongManager : MonoBehaviour
 
     private void SpawnNote(int noteValue)
     {
-        for (int i = 0; i < noteValues.Count; i++)
+        for (int i = 0; i < notePrefabs.Count; i++)
         {
-            if (noteValue == noteValues[i])
+            if (noteValue == notePrefabs[i].GetComponent<Note>().noteValue)
             {
                 Instantiate(notePrefabs[i],
                 lanes[i].position,
                 notePrefabs[i].transform.rotation);
             }
         }
+        // for (int i = 0; i < noteValues.Count; i++)
+        // {
+        //     if (noteValue == noteValues[i])
+        //     {
+        //         Instantiate(notePrefabs[i],
+        //         lanes[i].position,
+        //         notePrefabs[i].transform.rotation);
+        //     }
+        // }
     }
 
     private void Update()
