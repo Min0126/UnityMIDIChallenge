@@ -101,6 +101,8 @@ MonoBehaviour:
   noteIndicatorPos: {x: 0, y: 0, z: 0}
   noteScore: 20
   marginOfError: 1
+  hitSound: {fileID: 8300000, guid: 525f62cefb838e7478abcd4d095a27b0, type: 3}
+  noteKeyCode: 115
 --- !u!70 &8391417466705997874
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

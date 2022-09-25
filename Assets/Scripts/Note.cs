@@ -25,6 +25,9 @@ public class Note : MonoBehaviour
 
     private KeyCode[] keyValues;
 
+    [SerializeField]
+    private KeyCode noteKeyCode;
+
     // List<KeyCode> currentKeyPressedList = new List<KeyCode>();
     // public float assignedTime; // time that player suppose to tap the note
     // // Start is called before the first frame update
@@ -91,7 +94,6 @@ public class Note : MonoBehaviour
     //         {
     //             SongManager.Instance.currentKeyPressedList.Add(e.keyCode);
     //         }
-
     //         // foreach (KeyCode key in keyValues)
     //         // {
     //         //     if (e.keyCode == key && !currentKeyPressedList.Contains(key))
@@ -106,7 +108,6 @@ public class Note : MonoBehaviour
     //         {
     //             SongManager.Instance.currentKeyPressedList.Remove(e.keyCode);
     //         }
-
     //         // foreach (KeyCode key in keyValues)
     //         // {
     //         //     if (e.keyCode == key && currentKeyPressedList.Contains(key))
@@ -116,7 +117,6 @@ public class Note : MonoBehaviour
     //         // }
     //     }
     // }
-
     // void OnGUI()
     // {
     //     Event e = Event.current;
@@ -136,7 +136,7 @@ public class Note : MonoBehaviour
         {
             foreach (KeyCode key in SongManager.Instance.currentKeyPressedList)
             {
-                if (key.ToString() == gameObject.name[0].ToString())
+                if (key == noteKeyCode)
                 {
                     // int noteScore = other.gameObject.GetComponent<Note>().noteScore;
                     // ScoreManager.Instance.totalScore += noteScore;
