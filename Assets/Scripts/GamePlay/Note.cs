@@ -27,8 +27,7 @@ public class Note : MonoBehaviour
 
     private KeyCode[] keyValues;
 
-    [SerializeField]
-    private KeyCode noteKeyCode;
+    public KeyCode noteKeyCode;
 
     // List<KeyCode> currentKeyPressedList = new List<KeyCode>();
     // public float assignedTime; // time that player suppose to tap the note

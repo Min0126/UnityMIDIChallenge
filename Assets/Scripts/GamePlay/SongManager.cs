@@ -71,7 +71,15 @@ public class SongManager : MonoBehaviour
         midiFilePlayer = FindObjectOfType<MidiFilePlayer>();
         midiFilePlayer.OnEventNotesMidi.AddListener (NoteActions);
         playerNoteSpeed = midiFilePlayer.MPTK_Speed;
-        // ReadFromFile();
+        SetKeyCanPressed();
+    }
+
+    private void SetKeyCanPressed()
+    {
+        foreach (GameObject note in notePrefabs)
+        {
+            keysCanPressed.Add(note.GetComponent<Note>().noteKeyCode);
+        }
     }
 
     void OnGUI()
@@ -138,8 +146,8 @@ public class SongManager : MonoBehaviour
                 // noteTime = note.Duration; // get the note duration
                 // noteTime = note.Duration; // get the note duration
                 noteSpeed = note.Velocity;
-                // expectedNoteSpeed = midiFilePlayer.MPTK_Speed;
 
+                // expectedNoteSpeed = midiFilePlayer.MPTK_Speed;
                 // audioTime = note.RealTime;
                 SpawnNote (noteValue);
 

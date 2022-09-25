@@ -2776,9 +2776,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noteSpeed: 0
-  expectedNoteSpeed: 0
+  playerNoteSpeed: 0
   currentKeyPressedList: 
-  keysCanPressed: 610000007300000064000000660000006700000068000000
+  keysCanPressed: 
   buttonSounds:
   - {fileID: 8300000, guid: 024cf7aa02ea42541817cfc299ce8d79, type: 3}
   - {fileID: 8300000, guid: 525f62cefb838e7478abcd4d095a27b0, type: 3}
