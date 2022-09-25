@@ -8,25 +8,18 @@ public class ScaleToScreenSize : MonoBehaviour
 
     private float width;
 
-    private float screenRatio;
-
     private Camera mainCamera;
 
     [SerializeField]
     private bool scaleOnlyWidth;
 
-    private SpriteRenderer sr;
-
-    // Start is called before the first frame update
     void Start()
     {
         mainCamera = Camera.main;
-        sr = GetComponent<SpriteRenderer>();
         height = mainCamera.orthographicSize * 2;
         width = height * mainCamera.aspect;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!scaleOnlyWidth)
