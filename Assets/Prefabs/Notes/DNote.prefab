@@ -99,9 +99,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   despawnOffset: 20
   noteIndicatorPos: {x: 0, y: 0, z: 0}
+  noteValue: 38
   noteScore: 20
   marginOfError: 3
-  hitSound: {fileID: 8300000, guid: dbb068488babebd4989ef747b8ded337, type: 3}
   noteKeyCode: 100
 --- !u!70 &-366982611596316348
 CapsuleCollider2D:

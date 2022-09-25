@@ -54,8 +54,8 @@ public class SongManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> notePrefabs = new List<GameObject>();
 
-    [SerializeField]
-    private List<int> noteValues = new List<int>();
+    // [SerializeField]
+    // private List<int> noteValues = new List<int>();
 
     [SerializeField]
     private List<Transform> lanes = new List<Transform>();
@@ -145,15 +145,24 @@ public class SongManager : MonoBehaviour
 
     private void SpawnNote(int noteValue)
     {
-        for (int i = 0; i < noteValues.Count; i++)
+        for (int i = 0; i < notePrefabs.Count; i++)
         {
-            if (noteValue == noteValues[i])
+            if (noteValue == notePrefabs[i].GetComponent<Note>().noteValue)
             {
                 Instantiate(notePrefabs[i],
                 lanes[i].position,
                 notePrefabs[i].transform.rotation);
             }
         }
+        // for (int i = 0; i < noteValues.Count; i++)
+        // {
+        //     if (noteValue == noteValues[i])
+        //     {
+        //         Instantiate(notePrefabs[i],
+        //         lanes[i].position,
+        //         notePrefabs[i].transform.rotation);
+        //     }
+        // }
     }
 
     private void Update()

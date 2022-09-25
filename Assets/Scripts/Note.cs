@@ -12,6 +12,8 @@ public class Note : MonoBehaviour
     [SerializeField]
     private Vector3 noteIndicatorPos;
 
+    public int noteValue;
+
     private float timeSpawned;
 
     float timeElapsed;
