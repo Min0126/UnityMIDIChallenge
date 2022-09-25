@@ -27,8 +27,7 @@ public class Note : MonoBehaviour
 
     private KeyCode[] keyValues;
 
-    [SerializeField]
-    private KeyCode noteKeyCode;
+    public KeyCode noteKeyCode;
 
     // List<KeyCode> currentKeyPressedList = new List<KeyCode>();
     // public float assignedTime; // time that player suppose to tap the note
@@ -51,7 +50,7 @@ public class Note : MonoBehaviour
         transform
             .Translate(Vector3.left *
             SongManager.Instance.noteSpeed *
-            SongManager.Instance.songSpeed *
+            SongManager.Instance.playerNoteSpeed *
             Time.deltaTime);
         //////////////////////////////////////////////////////
         // double timeSinceSpawned =
