@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class ScaleToScreenSize : MonoBehaviour
 {
-    public float height{ get; private set; }
+    public float height { get; private set; }
 
     public float width { get; private set; }
 
-    private Camera mainCamera;
-
     [SerializeField]
-    private bool scaleOnlyWidth;
+    public bool scaleOnlyWidth;
 
     void Start()
     {
-        mainCamera = Camera.main;
+        Camera mainCamera = Camera.main;
         height = mainCamera.orthographicSize * 2;
         width = height * mainCamera.aspect;
     }

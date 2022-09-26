@@ -7,10 +7,10 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance { get; private set; }
 
-    private int totalScore;
+    public int totalScore;
 
     [SerializeField]
-    private TMP_Text scoreText;
+    public TMP_Text scoreText;
 
     private void Start()
     {

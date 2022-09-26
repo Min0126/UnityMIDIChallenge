@@ -32,7 +32,10 @@ public class Note : MonoBehaviour
 
     void Update()
     {
-        CheckNote();
+        CheckNote(noteIndicatorPos,
+        marginOfError,
+        SongManager.Instance.currentKeyPressedList,
+        noteKeyCode);
         NoteMove(SongManager.Instance.noteSpeed,
         SongManager.Instance.playerNoteSpeed);
     }
@@ -44,12 +47,17 @@ public class Note : MonoBehaviour
         transform.Translate (noteDirection);
     }
 
-    public void CheckNote()
+    public void CheckNote(
+        Vector3 noteIndicatorPos,
+        float marginOfError,
+        List<KeyCode> currentKeyPressedList,
+        KeyCode noteKeyCode
+    )
     {
         float distance = Mathf.Abs(noteIndicatorPos.y - transform.position.y);
         if (distance <= marginOfError)
         {
-            foreach (KeyCode key in SongManager.Instance.currentKeyPressedList)
+            foreach (KeyCode key in currentKeyPressedList)
             {
                 if (key == noteKeyCode)
                 {
