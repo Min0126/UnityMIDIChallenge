@@ -7,7 +7,7 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance { get; private set; }
 
-    public int totalScore;
+    private int totalScore;
 
     [SerializeField]
     private TMP_Text scoreText;
@@ -26,10 +26,5 @@ public class ScoreManager : MonoBehaviour
     public void Hit(int score)
     {
         totalScore += score;
-    }
-
-    public void Miss()
-    {
-        Debug.Log($"Player Miss!");
     }
 }

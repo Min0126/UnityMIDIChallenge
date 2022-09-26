@@ -10,7 +10,7 @@ public class Note : MonoBehaviour
 
     public KeyCode noteKeyCode;
 
-    private Vector3 spawnPos;
+    public Vector3 spawnPos { get; private set; }
 
     private string currentKeyPressed;
 
@@ -32,16 +32,19 @@ public class Note : MonoBehaviour
 
     void Update()
     {
-        CheckNote (noteIndicatorPos);
-
-        transform
-            .Translate(Vector3.left *
-            SongManager.Instance.noteSpeed *
-            SongManager.Instance.playerNoteSpeed *
-            Time.deltaTime);
+        CheckNote();
+        NoteMove(SongManager.Instance.noteSpeed,
+        SongManager.Instance.playerNoteSpeed);
     }
 
-    private void CheckNote(Vector3 noteIndicatorPos)
+    public void NoteMove(float noteSpeed, float playerNoteSpeed)
+    {
+        Vector3 noteDirection =
+            Vector3.left * noteSpeed * playerNoteSpeed * Time.deltaTime;
+        transform.Translate (noteDirection);
+    }
+
+    public void CheckNote()
     {
         float distance = Mathf.Abs(noteIndicatorPos.y - transform.position.y);
         if (distance <= marginOfError)
@@ -54,10 +57,6 @@ public class Note : MonoBehaviour
                     Destroy (gameObject);
                 }
             }
-        }
-        else
-        {
-            ScoreManager.Instance.Miss();
         }
     }
 

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ScaleToScreenSize : MonoBehaviour
 {
-    private float height;
+    public float height{ get; private set; }
 
-    private float width;
+    public float width { get; private set; }
 
     private Camera mainCamera;
 
@@ -32,7 +32,7 @@ public class ScaleToScreenSize : MonoBehaviour
         }
     }
 
-    private void ScaleToScreen(float width, float height)
+    public void ScaleToScreen(float width, float height)
     {
         transform.localScale = new Vector3(width, height, 1);
     }

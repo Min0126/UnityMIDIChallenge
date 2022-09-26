@@ -97,12 +97,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ef30b1f6bf903469693dd7103578f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  despawnOffset: 20
-  noteIndicatorPos: {x: 0, y: 0, z: 0}
   noteValue: 48
   noteScore: 20
-  marginOfError: 3
   noteKeyCode: 103
+  despawnOffset: 20
+  noteIndicatorPos: {x: 0, y: 0, z: 0}
+  marginOfError: 1
 --- !u!70 &28780411341146464
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
