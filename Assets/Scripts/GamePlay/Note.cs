@@ -35,7 +35,8 @@ public class Note : MonoBehaviour
         CheckNote(noteIndicatorPos,
         marginOfError,
         SongManager.Instance.currentKeyPressedList,
-        noteKeyCode);
+        noteKeyCode,ScoreManager.Instance);
+        
         NoteMove(SongManager.Instance.noteSpeed,
         SongManager.Instance.playerNoteSpeed);
     }
@@ -51,7 +52,8 @@ public class Note : MonoBehaviour
         Vector3 noteIndicatorPos,
         float marginOfError,
         List<KeyCode> currentKeyPressedList,
-        KeyCode noteKeyCode
+        KeyCode noteKeyCode,
+        IScoreManagerInterface scoreManagerInterface
     )
     {
         float distance = Mathf.Abs(noteIndicatorPos.y - transform.position.y);
@@ -61,7 +63,7 @@ public class Note : MonoBehaviour
             {
                 if (key == noteKeyCode)
                 {
-                    ScoreManager.Instance.Hit (noteScore);
+                    scoreManagerInterface.Hit (noteScore);
                     Destroy (gameObject);
                 }
             }

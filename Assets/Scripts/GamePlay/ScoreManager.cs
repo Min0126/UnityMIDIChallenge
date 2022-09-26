@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ScoreManager : MonoBehaviour
+public class ScoreManager : MonoBehaviour,IScoreManagerInterface
 {
     public static ScoreManager Instance { get; private set; }
 

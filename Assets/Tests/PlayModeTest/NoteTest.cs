@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using MidiPlayerTK;
+using Moq;
 using NUnit.Framework;
 using TMPro;
 using UnityEditor;
@@ -55,15 +56,8 @@ public class NoteTest
         GameObject gameObject = new GameObject();
         Note note = gameObject.AddComponent<Note>();
 
-        var canvasPrefab =
-            AssetDatabase
-                .LoadAssetAtPath<GameObject>("Assets/Prefabs/Canvas.prefab");
-        canvasPrefab = GameObject.Instantiate(canvasPrefab);
-
-        GameObject scoreManagerGameObject = new GameObject();
-        ScoreManager scoreManager = gameObject.AddComponent<ScoreManager>();
-        scoreManager.scoreText =
-            canvasPrefab.GetComponentInChildren<TMP_Text>();
+        var scoreManagerMock = new Mock<IScoreManagerInterface>();
+        scoreManagerMock.Setup(mock => mock.Hit(20));
 
         gameObject.transform.position = new Vector3(0, 0.5f, 0);
         Vector3 noteIndicatorPos = new Vector3(0, 1, 0);
@@ -73,15 +67,15 @@ public class NoteTest
         currentKeyPressedList.Add(KeyCode.A);
         KeyCode noteKeyCode = KeyCode.A;
 
-        note.CheckNote (
-            noteIndicatorPos,
+        note
+            .CheckNote(noteIndicatorPos,
             marginOfError,
             currentKeyPressedList,
-            noteKeyCode
-        );
+            noteKeyCode,
+            scoreManagerMock.Object);
 
         yield return new WaitForSeconds(1);
 
-        Assert.That(scoreManager.totalScore > 0);
+        Assert.That(gameObject == null);
     }
 }
