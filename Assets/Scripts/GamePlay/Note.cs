@@ -12,8 +12,6 @@ public class Note : MonoBehaviour
 
     public Vector3 spawnPos { get; private set; }
 
-    private string currentKeyPressed;
-
     private KeyCode[] keyValues;
 
     [SerializeField]
@@ -35,8 +33,9 @@ public class Note : MonoBehaviour
         CheckNote(noteIndicatorPos,
         marginOfError,
         SongManager.Instance.currentKeyPressedList,
-        noteKeyCode,ScoreManager.Instance);
-        
+        noteKeyCode,
+        ScoreManager.Instance);
+
         NoteMove(SongManager.Instance.noteSpeed,
         SongManager.Instance.playerNoteSpeed);
     }
