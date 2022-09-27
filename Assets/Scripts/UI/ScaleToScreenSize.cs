@@ -11,14 +11,14 @@ public class ScaleToScreenSize : MonoBehaviour
     [SerializeField]
     public bool scaleOnlyWidth;
 
-    void Start()
+    private void Start()
     {
         Camera mainCamera = Camera.main;
         height = mainCamera.orthographicSize * 2;
         width = height * mainCamera.aspect;
     }
 
-    void Update()
+    private void Update()
     {
         if (!scaleOnlyWidth)
         {

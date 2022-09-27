@@ -58,7 +58,7 @@ public class SongManager : MonoBehaviour
         }
     }
 
-    void OnGUI()
+    private void OnGUI()
     {
         Event e = Event.current;
         if (e.type == EventType.KeyDown)

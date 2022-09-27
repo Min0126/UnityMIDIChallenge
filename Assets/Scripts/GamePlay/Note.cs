@@ -23,12 +23,12 @@ public class Note : MonoBehaviour
     [SerializeField]
     private float marginOfError = 1;
 
-    void Start()
+    private void Start()
     {
         spawnPos = transform.position;
     }
 
-    void Update()
+    private void Update()
     {
         CheckNote(noteIndicatorPos,
         marginOfError,
