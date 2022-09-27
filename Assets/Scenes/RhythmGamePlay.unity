@@ -2540,11 +2540,11 @@ MonoBehaviour:
   keysCanPressed: 
   buttonSounds:
   - {fileID: 8300000, guid: 024cf7aa02ea42541817cfc299ce8d79, type: 3}
-  - {fileID: 8300000, guid: 525f62cefb838e7478abcd4d095a27b0, type: 3}
-  - {fileID: 8300000, guid: dbb068488babebd4989ef747b8ded337, type: 3}
-  - {fileID: 8300000, guid: 6687885486e03c14a930b3e10f9d62c1, type: 3}
+  - {fileID: 8300000, guid: 05be90afc8116d641a737096d7f29df1, type: 3}
+  - {fileID: 8300000, guid: dcff598e50c591145ac017a5f1a6af18, type: 3}
+  - {fileID: 8300000, guid: 7bc84c46ca510b749ab7de7f6e180393, type: 3}
   - {fileID: 8300000, guid: acce140328c801d43b4e37750acfbc0f, type: 3}
-  - {fileID: 8300000, guid: 713ef6f55ff65c34184591f4a08c935f, type: 3}
+  - {fileID: 8300000, guid: e24c4dee15501424aba4e390e9e019c7, type: 3}
   audioSource: {fileID: 1375813006}
   notePrefabs:
   - {fileID: 1669298206217628927, guid: 55e43c7a8ce2fe04e8d7d79867c9244b, type: 3}
