@@ -4,29 +4,20 @@ using UnityEngine;
 
 public class ScaleToScreenSize : MonoBehaviour
 {
-    private float height;
+    public float height { get; private set; }
 
-    private float width;
-
-    private float screenRatio;
-
-    private Camera mainCamera;
+    public float width { get; private set; }
 
     [SerializeField]
-    private bool scaleOnlyWidth;
+    public bool scaleOnlyWidth;
 
-    private SpriteRenderer sr;
-
-    // Start is called before the first frame update
     void Start()
     {
-        mainCamera = Camera.main;
-        sr = GetComponent<SpriteRenderer>();
+        Camera mainCamera = Camera.main;
         height = mainCamera.orthographicSize * 2;
         width = height * mainCamera.aspect;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!scaleOnlyWidth)
@@ -39,7 +30,7 @@ public class ScaleToScreenSize : MonoBehaviour
         }
     }
 
-    private void ScaleToScreen(float width, float height)
+    public void ScaleToScreen(float width, float height)
     {
         transform.localScale = new Vector3(width, height, 1);
     }
