@@ -63,9 +63,9 @@ public class SongManager : MonoBehaviour
         Event e = Event.current;
         if (e.type == EventType.KeyDown)
         {
-            if (!SongManager.Instance.currentKeyPressedList.Contains(e.keyCode))
+            if (!currentKeyPressedList.Contains(e.keyCode))
             {
-                SongManager.Instance.currentKeyPressedList.Add(e.keyCode);
+                currentKeyPressedList.Add(e.keyCode);
                 for (int i = 0; i < keysCanPressed.Count; i++)
                 {
                     if (e.keyCode == keysCanPressed[i])
@@ -79,9 +79,9 @@ public class SongManager : MonoBehaviour
         }
         if (e.type == EventType.KeyUp)
         {
-            if (SongManager.Instance.currentKeyPressedList.Contains(e.keyCode))
+            if (currentKeyPressedList.Contains(e.keyCode))
             {
-                SongManager.Instance.currentKeyPressedList.Remove(e.keyCode);
+                currentKeyPressedList.Remove(e.keyCode);
                 for (int i = 0; i < keysCanPressed.Count; i++)
                 {
                     if (e.keyCode == keysCanPressed[i])
