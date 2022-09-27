@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ScoreManager : MonoBehaviour,IScoreManagerInterface
+public class ScoreManager : MonoBehaviour, IScoreManagerInterface
 {
     public static ScoreManager Instance { get; private set; }
 
-    public int totalScore;
+    public int totalScore { get; private set; }
 
     [SerializeField]
-    public TMP_Text scoreText;
+    private TMP_Text scoreText;
 
     private void Start()
     {

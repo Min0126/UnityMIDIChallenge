@@ -44,10 +44,13 @@ public class SongManager : MonoBehaviour
 
         // set initial values
         playerNoteSpeed = midiFilePlayer.MPTK_Speed;
-        SetKeyCanPressed();
+        SetKeyCanPressed (notePrefabs, keysCanPressed);
     }
 
-    private void SetKeyCanPressed()
+    public void SetKeyCanPressed(
+        List<GameObject> notePrefabs,
+        List<KeyCode> keysCanPressed
+    )
     {
         foreach (GameObject note in notePrefabs)
         {
@@ -100,12 +103,16 @@ public class SongManager : MonoBehaviour
 
                 noteSpeed = note.Velocity;
 
-                SpawnNote (noteValue);
+                SpawnNote (noteValue, notePrefabs, lanes);
             }
         }
     }
 
-    private void SpawnNote(int noteValue)
+    public void SpawnNote(
+        int noteValue,
+        List<GameObject> notePrefabs,
+        List<Transform> lanes
+    )
     {
         for (int i = 0; i < notePrefabs.Count; i++)
         {

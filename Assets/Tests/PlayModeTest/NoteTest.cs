@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using MidiPlayerTK;
 using Moq;
 using NUnit.Framework;
-using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -37,20 +35,6 @@ public class NoteTest
     }
 
     [UnityTest]
-    public IEnumerator ScoreManagerHitTest()
-    {
-        ScoreManager scoreManager = new ScoreManager();
-
-        int startTotalScore = scoreManager.totalScore;
-        int score = 20;
-        scoreManager.Hit (score);
-
-        yield return null;
-
-        Assert.That(startTotalScore < scoreManager.totalScore);
-    }
-
-    [UnityTest]
     public IEnumerator CheckNoteTest()
     {
         GameObject gameObject = new GameObject();
@@ -74,7 +58,7 @@ public class NoteTest
             noteKeyCode,
             scoreManagerMock.Object);
 
-        yield return new WaitForSeconds(1);
+        yield return null;
 
         Assert.That(gameObject == null);
     }
